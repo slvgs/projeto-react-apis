@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { GlobalContext } from './Contexts/GlobalContext';
-
+import Router from "./routes/Router"
 function App() {
 
   const pokemons = useRequestData([], "?limit=24")[0]
