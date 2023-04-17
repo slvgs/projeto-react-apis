@@ -8,7 +8,7 @@ import { StyledGotcha } from "../../Components/PopUp/StyledPopUp"
 
 
 
-export const pokedexIndex = () => {
+export const PokedexIndex = () => {
 
     const {pokemons, capturados, setCapturados,myPokedex, capturar, gotcha, setGotcha, colorToPass} = useContext(GlobalContext)
 

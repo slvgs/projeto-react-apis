@@ -7,7 +7,7 @@ import { PopUp } from "../../Components/PopUp/PopUp"
 
 
 
-export const gotchaPokedex = () => {
+export const GotchaPokedex = () => {
 
 
     const { capturados, setCapturados, capturar, gotcha, colorToPass, myPokedex } = useContext(GlobalContext)

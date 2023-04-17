@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-export const useRequestData = (initialState, path, header) => {
+export const UseRequestData = (initialState, path, header) => {
   const [dados, setDados] = useState(initialState);
 
   useEffect(() => {
@@ -21,3 +21,4 @@ export const useRequestData = (initialState, path, header) => {
 
   return [dados];
 }
+

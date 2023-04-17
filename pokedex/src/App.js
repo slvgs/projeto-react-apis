@@ -2,9 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { GlobalContext } from './Contexts/GlobalContext';
 import Router from "./routes/Router"
+import { UseRequestData } from './Hooks/UseDataRequest';
+import { useState, useEffect } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import {theme} from "./theme"
+
 function App() {
 
-  const pokemons = useRequestData([], "?limit=24")[0]
+  const pokemons = UseRequestData([], "?limit=24")[0]
 
   const [capturados, setCapturados] = useState([])
 

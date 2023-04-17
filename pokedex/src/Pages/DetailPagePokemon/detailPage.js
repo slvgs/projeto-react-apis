@@ -1,4 +1,3 @@
-import { useRequestData } from "../../Hooks/UseRequestData"
 import { GlobalContext } from "../../Contexts/GlobalContext"
 import { useContext } from "react"
 import { useParams } from "react-router-dom"
@@ -8,6 +7,7 @@ import Pokebola from "../../Assets/Pokebola2.png"
 import { StatBar } from "../../Components/StatBar/StatBar"
 import { StyledTypes } from "../../Components/PokemonCard/StyledPokemonCard"
 import { images } from "../../Assets/Types/images"
+import { UseRequestData } from "../../Hooks/UseDataRequest"
 import { PopUp } from "../../Components/PopUp/PopUp"
 
 
