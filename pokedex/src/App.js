@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import { GlobalContext } from './Contexts/GlobalContext';
 import Router from "./routes/Router"
-import { UseRequestData } from './Hooks/UseDataRequest';
 import { useState, useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import {theme} from "./theme"
+import { UseRequestData } from './Hooks/UseDataRequest';
+import {color} from 'framer-motion'
 
 function App() {
 
@@ -22,37 +22,64 @@ function App() {
   const [render, setRender] = useState(false)
 
   const [myPokedex, setMyPokedex] = useState(JSON.parse(localStorage.getItem('myPokedex') || '[]'));
-  
+
 
   useEffect(() => {
     if (capturados.length !== 0) {
       localStorage.setItem('myPokedex', JSON.stringify(capturados))
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
-      console.log(myPokedex)
+      console.log("eu")
+    }
+    if (capturados.length === 1 && color === "#FF6262") {
+      localStorage.setItem('myPokedex', JSON.stringify(capturados))
+      setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
+      console.log("eu")
     }
   }
     , [capturados]);
 
+
+
   useEffect(() => {
+    if (capturados.length !== 0) {
+      localStorage.setItem('myPokedex', JSON.stringify(capturados))
+    }
+
+
     if (JSON.parse(localStorage.getItem('myPokedex')) !== null && JSON.parse(localStorage.getItem('myPokedex')).length !== 0) {
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
       console.log(myPokedex)
       setCapturados(JSON.parse(localStorage.getItem('myPokedex')));
       console.log(capturados)
     }
+    // if (pokemons.length !== 0) {
+    //   localStorage.setItem('listaPokemons', JSON.stringify(pokemons))
+    //   console.log(localStorage.getItem("listaPokemons"))
+    // }
+  }, []);
+
+  useEffect(()=>{
     if (pokemons.length !== 0) {
       localStorage.setItem('listaPokemons', JSON.stringify(pokemons))
       console.log(localStorage.getItem("listaPokemons"))
     }
-  }, []);
 
-  useEffect(()=>{
-    if(idButton != 0){
-    localStorage.setItem("idButton", JSON.stringify(idButton))
-    setIdButton(JSON.parse(localStorage.getItem("idButton")))
+  }, [pokemons])
+
+  
+
+  useEffect(() => {
+    if (idButton != 0) {
+      localStorage.setItem("idButton", JSON.stringify(idButton))
+      setIdButton(JSON.parse(localStorage.getItem("idButton")))
     }
   }, [idButton])
 
+
+
+  //   if(myPokedex.lenght !== 0) {
+  //     setCapturados(myPokedex)
+  // }
 
 
 
@@ -70,6 +97,7 @@ function App() {
 
           setTimeout(() => setGotcha(false), 3000)
           setColorToPass(color)
+          // alert(`${capturando.name} capturado!`)
         }
 
         else {
@@ -84,12 +112,21 @@ function App() {
           setMyPokedex([...myPokedex, capturando])
           setGotcha(true)
           setTimeout(() => setGotcha(false), 3000)
+          // alert(`${capturando.name} capturado!`)
         }
     }
     if (color === "#FF6262") {
       setColorToPass(color)
-      setCapturados(capturados.filter((pokemon) => { return (pokemon.id) != capturando.id }))
-      setMyPokedex(capturados.filter((pokemon) => { return (pokemon.id) != capturando.id }))
+      if (capturados.length > 1) {
+        setCapturados(capturados.filter((pokemon) => { return ((pokemon.id) != capturando.id) }))
+        console.log(capturados)
+        setMyPokedex(capturados.filter((pokemon) => { return (pokemon.id) != capturando.id }))
+      }
+      if (myPokedex.length === 1) {
+        setCapturados([])
+        console.log(capturados)
+        setMyPokedex([])
+      }
       setGotcha(true)
       console.log(gotcha)
 
@@ -97,25 +134,22 @@ function App() {
     }
   }
 
+  // useEffect(() => {
+  //   console.log(capturados);
+  // }, [capturados]);
+  
+
 
   const context = { pokemons, capturados, capturar, setCapturados, gotcha, setGotcha, colorToPass, idButton, setIdButton, render, setRender, myPokedex, setMyPokedex }
 
-  
+
 
   return (
-      <GlobalContext.Provider value={context}>
-        <ChakraProvider theme={theme}>
-
-              <Router />
-
-
-        </ChakraProvider>
-
-
-      </GlobalContext.Provider>
-    
-        
-    
+    <GlobalContext.Provider value={context}>
+      <ChakraProvider theme={theme}>
+        <Router />
+      </ChakraProvider>
+    </GlobalContext.Provider>
   );
 }
 
