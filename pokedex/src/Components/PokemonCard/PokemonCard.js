@@ -3,7 +3,7 @@ import Pokebola from "../../Assets/pokebola.png"
 import { images } from "../../Assets/Types/images"
 import { colors } from "../../Assets/colors"
 import { useNavigate } from "react-router-dom"
-import { goToDetailsPage } from "../../Routes/coordinator"
+import { goToDetailsPage } from "../../routes/coordinator"
 import { useContext } from "react"
 import { GlobalContext } from "../../Contexts/GlobalContext"
 

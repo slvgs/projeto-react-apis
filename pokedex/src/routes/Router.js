@@ -1,9 +1,10 @@
-import { PokemonDetailPage } from '../../pokedex/src/Pages/PokemonDetailPage/PokemonDetailPage';
-import { MyPokedexPage } from '../../pokedex/src/Pages/MyPokedexPage/MyPokedexPage.js';
-import { pokedexIndex } from '../Pages/pokedexPage/pokedexIndex.js';
+import { GotchaPokedex } from '../Pages/pokedexPageGotcha/gotchaPokedex';
 import { Header } from '../Components/Header/Header';
-import { ErrorPage } from '../../pokedex/src/Pages/ErrorPage/ErrorPage';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import {BrowserRouter } from "react-router-dom"
+import { Route, Routes} from "react-router";
+import { PokedexIndex } from '../Pages/pokedexPage/pokedexIndex';
+import { PokemonDetailPage } from '../Pages/DetailPagePokemon/detailPage';
+import { ErrorPage } from '../Pages/ErrorPage/error';
 
 export const Router = () => {
 
@@ -12,11 +13,13 @@ export const Router = () => {
         <BrowserRouter>
         <Header/>
         <Routes> 
-          <Route index element={<pokedexIndex />}/>
+          <Route index element={<PokedexIndex />}/>
           <Route path="detailsPage/:name" element={<PokemonDetailPage />}/>
-          <Route path="myPokedex" element={<MyPokedexPage />}/>
+          <Route path="myPokedex" element={<GotchaPokedex />}/>
           <Route path="*" element={<ErrorPage />}/>
         </Routes>
       </BrowserRouter>
     )
 } 
+
+export default Router;
