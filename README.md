@@ -20,3 +20,6 @@ Os conteúdos principais  a serem estudados são:
 
 ## Página Pokedex
 ![HomePage](./pokedex/src/Assets/PokedexPage.png)
+
+## Site deployado:
+https://projeto-react-apis-navy-six.vercel.app/
